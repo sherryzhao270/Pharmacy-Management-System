@@ -28,7 +28,7 @@ def showPharmacyEmpolyee(request):
 '''
 
 def tradeHistroyView(request):
-    sql_select = "SELECT m.purchase_date, m.m_name, employee.e_name, customer.c_name, pharmacy.p_name, m.m_price, m.d_name "
+    sql_select = "SELECT m.purchase_date, m.m_name, customer.c_name, employee.e_name, pharmacy.p_name, m.m_price, m.d_name "
     sql_from = 'FROM ((medicine FULL OUTER JOIN prescription_medicine ON medicine.m_id = prescription_medicine.m_id) as med FULL OUTER JOIN doctor ON med.d_id = doctor.d_id) as m, employee, customer, pharmacy '
     sql_where = 'WHERE employee.e_ssn = m.e_ssn and customer.c_ssn = m.c_ssn and pharmacy.p_id = m.p_id '
     sql = sql_select + sql_from + sql_where
@@ -47,6 +47,8 @@ def tradeHistroyView(request):
             sql = sql + str + "employee.e_name = '" + employee_name + "'"
         if medicine_name != '':
             sql = sql + str + "m.m_name = '" + medicine_name + "'"
+        if pharmacy_name != '':
+            sql = sql + str + "pharmacy.p_name = '" + pharmacy_name + "'"
         if date_later_than != '':
             sql = sql + str + "m.purchase_date >= '" + date_later_than + "'"
         if date_before != '':

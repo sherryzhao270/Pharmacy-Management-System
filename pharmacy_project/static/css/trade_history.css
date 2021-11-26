@@ -25,3 +25,8 @@ button{float:right}
     margin-left: 50px;
     margin-right: 50px;
 }
+
+th{
+    border-color: #fff;
+    background-color: rgb(212, 212, 212);
+}
