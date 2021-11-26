@@ -1,0 +1,47 @@
+{% load static %}
+<html>
+    <head>
+        <title>Pharmacy Database</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/trade_history.css' %}" />
+    </head>
+    <body>
+        <section class="row">
+            <h2 class='col-9'>Purchase History</h2>
+            <div class='col-2 link-to'><a href="#">go to storage</a></div>
+        </section>
+        <form method='POST'>
+            {% csrf_token %}
+            <input name = 'customer-name' placeholder="Customer Name">
+            <input name = 'employee-name' placeholder="Employee Name">
+            <input name = 'medicine-name' placeholder="Medicine Name"></br>
+            <input name = 'date-later-than' placeholder="Date later than">
+            <input name = 'date-before' placeholder="Date before">
+            <button class='btn btn-outline-primary' type=submit>submit</button>
+        </form>
+        
+        <section id='table-section'>
+            <table class = 'table trade-history-table'>
+                <tr>
+                    <th id='name'>Purchase Time</th>
+                    <th>Customer Name</th>
+                    <th>Employee Name</th>
+                    <th>Manufacture Name</th>
+                    <th>Price</th>
+                    <th>Doctor</th>
+                </tr>
+                {% for result in data %}
+                <tr>
+                    <td>{{result.4}}</td>
+                    <td>{{result.3}}</td>
+                    <td>{{result.1}}</td>
+                    <td>{{result.5}}</td>
+                    <td>{{result.2}}</td>
+                    <td>{{result.6}}</td>
+                
+                {% endfor %}
+                </tr>
+            </table>
+        </section>
+    </body>
+</html>

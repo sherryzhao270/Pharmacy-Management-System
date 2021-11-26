@@ -1,18 +1,21 @@
+{% load static %}
 <html>
     <head>
         <title>Pharmacy Database</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/test.css' %}" />
     </head>
     <body>
         <form method='POST'>
             {% csrf_token %}
             <input name = 'employee-name'>
             <input name = 'pharmacy-name'>
-            <button type=submit>submit</button>
+            <button class='btn btn-outline-primary' type=submit>submit</button>
         </form>
         <h2>Pharmacy</h2>
-        <table>
+        <table class = 'trade-history-table'>
             <tr>
-                <th>Name</th>
+                <th id='name'>Name</th>
                 <th>SSN</th>
                 <th>Pharmacy</th>
                 <th>Pharmacy ID</th>
