@@ -28,12 +28,16 @@ def showPharmacyEmpolyee(request):
 '''
 
 def tradeHistroyView(request):
-    sql = "SELECT * FROM medicine, prescription_medicine, customer, employee, doctor WHERE employee.e_ssn = medicine.e_ssn and customer.c_ssn = medicine.c_ssn"
+    sql_select = "SELECT m.purchase_date, customer.c_name, employee.e_name, manufacturer.f_name, m.m_price, doctor.d_name "
+    sql_from = 'FROM (medicine FULL OUTER JOIN prescription_medicine ON medicine.m_id = prescription_medicine.m_id) as m, customer, employee, doctor, manufacturer '
+    sql_where = 'WHERE employee.e_ssn = m.e_ssn and customer.c_ssn = m.c_ssn and manufacturer.f_id = m.f_id '
+    sql = sql_select + sql_from + sql_where
     str = ' and '
     if request.method == 'POST':
         customer_name = request.POST.get('customer-name')
         employee_name = request.POST.get('employee-name')
         medicine_name = request.POST.get('medicine-name')
+        pharmacy_name = request.POST.get('pharmacy-name')
         date_later_than = request.POST.get('date-later-than')
         date_before = request.POST.get('date-before')
         #print(type(employee_name))
@@ -42,11 +46,11 @@ def tradeHistroyView(request):
         if employee_name != '':
             sql = sql + str + "employee.e_name = '" + employee_name + "'"
         if medicine_name != '':
-            sql = sql + str + "medicine.m_name = '" + medicine_name + "'"
+            sql = sql + str + "m.m_name = '" + medicine_name + "'"
         if date_later_than != '':
-            sql = sql + str + "medicine.purchase_date >= '" + date_later_than + "'"
+            sql = sql + str + "m.purchase_date >= '" + date_later_than + "'"
         if date_before != '':
-            sql = sql + str + "medicine.purchase_date <= '" + date_before + "'"
+            sql = sql + str + "m.purchase_date <= '" + date_before + "'"
     #print(sql)
     #sql = "SELECT * FROM pharmacy, employee WHERE employee.p_id = pharmacy.p_id"
     cursor = connection.cursor()

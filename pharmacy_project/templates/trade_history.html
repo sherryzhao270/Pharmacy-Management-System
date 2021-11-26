@@ -15,6 +15,7 @@
             <input name = 'customer-name' placeholder="Customer Name">
             <input name = 'employee-name' placeholder="Employee Name">
             <input name = 'medicine-name' placeholder="Medicine Name"></br>
+            <input name = 'pharmacy-name' placeholder="Pharmacy Name">
             <input name = 'date-later-than' placeholder="Date later than">
             <input name = 'date-before' placeholder="Date before">
             <button class='btn btn-outline-primary' type=submit>submit</button>
@@ -24,19 +25,21 @@
             <table class = 'table trade-history-table'>
                 <tr>
                     <th id='name'>Purchase Time</th>
+                    <th>Medicine Name</th>
                     <th>Customer Name</th>
                     <th>Employee Name</th>
-                    <th>Manufacturer Name</th>
+                    <th>Pharmacy Name</th>
                     <th>Price</th>
                     <th>Doctor</th>
                 </tr>
                 {% for result in data %}
                 <tr>
-                    <td>{{result.4}}</td>
-                    <td>{{result.3}}</td>
+                    <td>{{result.0}}</td>
                     <td>{{result.1}}</td>
-                    <td>{{result.5}}</td>
                     <td>{{result.2}}</td>
+                    <td>{{result.3}}</td>
+                    <td>{{result.4}}</td>
+                    <td>{{result.5}}</td>
                     <td>{{result.6}}</td>
                 
                 {% endfor %}
