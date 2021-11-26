@@ -55,7 +55,7 @@ def tradeHistroyView(request):
     return render(request, 'trade_history.html', {'data':results})
 
 def storageView(request):
-    sql = "SELECT count(medicine.m_id) FROM medicine WHERE medicine.c_ssn = null"
+    sql = "SELECT medicine.m_name, pharmacy.p_name, count(medicine.m_id), min(medicine.m_price)  FROM medicine, pharmacy WHERE medicine.p_id = pharmacy.p_id and medicine.c_ssn IS NULL"
     str = ' and '
     if request.method == 'POST':
         pharmacy_name = request.POST.get('pharmacy-name')
@@ -65,7 +65,7 @@ def storageView(request):
             sql = sql + str + "medicine.p_name = '" + pharmacy_name + "'"
         if medicine_name != '':
             sql = sql + str + "medicine.m_name = '" + medicine_name + "'"
-    sql = sql + ' GROUP BY medicine.m_name '
+    sql = sql + ' GROUP BY medicine.m_name, pharmacy.p_name '
     cursor = connection.cursor()
     cursor.execute(sql)
     results = cursor.fetchall()
