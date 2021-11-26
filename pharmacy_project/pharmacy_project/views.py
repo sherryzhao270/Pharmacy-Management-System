@@ -62,7 +62,7 @@ def storageView(request):
         medicine_name = request.POST.get('medicine-name')
         #print(type(employee_name))
         if pharmacy_name != '':
-            sql = sql + str + "medicine.p_name = '" + pharmacy_name + "'"
+            sql = sql + str + "pharmacy.p_name = '" + pharmacy_name + "'"
         if medicine_name != '':
             sql = sql + str + "medicine.m_name = '" + medicine_name + "'"
     sql = sql + ' GROUP BY medicine.m_name, pharmacy.p_name '
