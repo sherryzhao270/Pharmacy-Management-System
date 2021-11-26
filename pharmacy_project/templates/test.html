@@ -3,6 +3,12 @@
         <title>Pharmacy Database</title>
     </head>
     <body>
+        <form method='POST'>
+            {% csrf_token %}
+            <input name = 'employee-name'>
+            <input name = 'pharmacy-name'>
+            <button type=submit>submit</button>
+        </form>
         <h2>Pharmacy</h2>
         <table>
             <tr>
