@@ -7,7 +7,7 @@ from django.db import connection
 def showdata(request):
     results = Pharmacy.objects.all()
     return render(request, 'test.html', {'data':results})
-
+'''
 def showPharmacyEmpolyee(request):
     sql = "SELECT * FROM pharmacy, employee WHERE employee.p_id = pharmacy.p_id"
     str = ' and '
@@ -25,7 +25,7 @@ def showPharmacyEmpolyee(request):
     cursor.execute(sql)
     results = cursor.fetchall()
     return render(request, 'test.html', {'data':results})
-
+'''
 
 def tradeHistroyView(request):
     sql = "SELECT * FROM medicine, prescription_medicine, customer, employee, doctor WHERE employee.e_ssn = medicine.e_ssn and customer.c_ssn = medicine.c_ssn"
@@ -53,4 +53,21 @@ def tradeHistroyView(request):
     cursor.execute(sql)
     results = cursor.fetchall()
     return render(request, 'trade_history.html', {'data':results})
+
+def storageView(request):
+    sql = "SELECT count(medicine.m_id) FROM medicine WHERE medicine.c_ssn = null"
+    str = ' and '
+    if request.method == 'POST':
+        pharmacy_name = request.POST.get('pharmacy-name')
+        medicine_name = request.POST.get('medicine-name')
+        #print(type(employee_name))
+        if pharmacy_name != '':
+            sql = sql + str + "medicine.p_name = '" + pharmacy_name + "'"
+        if medicine_name != '':
+            sql = sql + str + "medicine.m_name = '" + medicine_name + "'"
+    sql = sql + ' GROUP BY medicine.m_name '
+    cursor = connection.cursor()
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    return render(request, 'pharmacy_storage.html', {'data':results})
 
