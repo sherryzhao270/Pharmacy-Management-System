@@ -5,40 +5,44 @@
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
         <link rel="stylesheet" href="{% static 'css/trade_history.css' %}" />
     </head>
-    <body style="background-color: #bde7bd;">
-        <section class="row">
-            <h2 class='col-9'>Pharmacy Storage</h2>
-            <div class='col-3'><a href="/">View Purchase History</a></div>
-        </section>
-        <form method='POST'>
-            {% csrf_token %}
-            <input name = 'medicine-name' placeholder="Medicine Name">
-            <input name = 'pharmacy-name' placeholder="Pharmacy Name">
-            <button class='container' type=submit>Submit</button>
-        </form>
-        
-        <section id='table-section'>
-            <table class = 'table table-striped trade-history-table'>
-                <thead>
-                    <tr>
-                        <th id='name'>Medicine Name</th>
-                        <th>Pharmacy Name</th>
-                        <th>Number Left</th>
-                        <th>Min Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for result in data %}
-                <tr>
-                    <td>{{result.0}}</td>
-                    <td>{{result.1}}</td>
-                    <td>{{result.2}}</td>
-                    <td>$ {{result.3}}</td>
+    <body>
+        <section>
+            <div class='card'>
+                <section class="row">
+                    <h2 class='col-9'>Pharmacy Storage</h2>
+                    <div class='col-2'><a href="/">View Purchase History</a></div>
+                </section>
+                <form method='POST'>
+                    {% csrf_token %}
+                    <input name = 'medicine-name' placeholder="Medicine Name">
+                    <input name = 'pharmacy-name' placeholder="Pharmacy Name">
+                    <button class='container btn btn-outline-success' type=submit>Submit</button>
+                </form>
                 
-                {% endfor %}
-                </tr>
-                </tbody>
-            </table>
+                <section id='table-section'>
+                    <table class = 'table table-striped trade-history-table'>
+                        <thead>
+                            <tr>
+                                <th id='name'>Medicine Name</th>
+                                <th>Pharmacy Name</th>
+                                <th>Number Left</th>
+                                <th>Min Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for result in data %}
+                        <tr>
+                            <td>{{result.0}}</td>
+                            <td>{{result.1}}</td>
+                            <td>{{result.2}}</td>
+                            <td>$ {{result.3}}</td>
+                        
+                        {% endfor %}
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
         </section>
     </body>
 </html>

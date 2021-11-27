@@ -7,25 +7,6 @@ from django.db import connection
 def showdata(request):
     results = Pharmacy.objects.all()
     return render(request, 'test.html', {'data':results})
-'''
-def showPharmacyEmpolyee(request):
-    sql = "SELECT * FROM pharmacy, employee WHERE employee.p_id = pharmacy.p_id"
-    str = ' and '
-    if request.method == 'POST':
-        employee_name = request.POST.get('employee-name')
-        pharmacy_name = request.POST.get('pharmacy-name')
-        print(type(employee_name))
-        if employee_name != '':
-            sql = sql + str + "employee.e_name = '" + employee_name + "'"
-        if pharmacy_name != '':
-            sql = sql + str + "pharmacy.p_name = '" + pharmacy_name + "'"
-    print(sql)
-    #sql = "SELECT * FROM pharmacy, employee WHERE employee.p_id = pharmacy.p_id"
-    cursor = connection.cursor()
-    cursor.execute(sql)
-    results = cursor.fetchall()
-    return render(request, 'test.html', {'data':results})
-'''
 
 def tradeHistroyView(request):
     sql_select = "SELECT m.purchase_date, m.m_name, customer.c_name, employee.e_name, pharmacy.p_name, m.m_price, m.d_name "
