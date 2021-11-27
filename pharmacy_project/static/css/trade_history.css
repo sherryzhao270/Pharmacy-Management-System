@@ -4,14 +4,26 @@ form {
     margin: auto;
     width: 80%;
 }
+
 h2{
     padding: 30px;
     margin-left: 50px;
 }
-.link-to{
-    padding-top: 30px;
-    padding-bottom: 30px;
+
+.col-2{
+    font-size: 1.3em;
+    font-style: oblique;
+    margin-top: -70px;
+    margin-left: 1240px;
 }
+
+.col-3{
+    font-size: 1.15em;
+    font-style: oblique;
+    margin-top: -70px;
+    margin-left: 1190px;
+}
+
 input{
     width: 30%;
     border:0px;
@@ -19,18 +31,102 @@ input{
     padding: 5px;
     margin: 3px;
 }
-button{
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+    border: 3px solid #009879;
+    position: relative;
+    z-index: 1;
     float:right;
     margin-bottom: 50px;
-    margin-right: -40px;
+    margin-right: -80px;
+    font-size: 1.4em;
+    font-style: oblique;
+    color: #009879;
 }
+
+.container:hover{
+    color: #fff;
+    cursor: pointer;
+}
+
+.container:before{
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: #009879;
+}
+
+.container:hover:before{
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+}
+
+
 #table-section{
     margin: auto;
     margin-left: 50px;
     margin-right: 50px;
 }
 
-th{
-    border-color: #fff;
-    background-color: rgb(212, 212, 212);
+.trade-history-table{
+    border-collapse: collapse; 
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0, 5);
+    table-layout: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.trade-history-table thead tr{
+    background-color: #009879;
+    color: #ffffff; 
+    text-align: left;
+    font-weight: bold;
+    text-align: center;
+}
+
+.trade-history-table th,
+.trade-history-table td{
+    padding: 12px 15px;
+}
+
+.trade-history-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.trade-history-table tbody tr:nth-of-type(even){
+    background-color: #dfdbdb;
+}
+
+.trade-history-table tbody tr:nth-of-type(odd){
+    background-color: #f3f3f3;
+}
+
+.trade-history-table tbody tr:last-of-type {
+    border-bottom: 3px solid #009879;
 }

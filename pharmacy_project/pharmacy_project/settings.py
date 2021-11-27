@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'pharmacy_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pharmacy_database',
+        'NAME': 'Pharmacy Database',
         'USER': 'postgres',
-        'PASSWORD': 'sunset',
+        'PASSWORD': 'mineral43',
         'HOST': 'localhost',
         'PORT':'5432'
     }
