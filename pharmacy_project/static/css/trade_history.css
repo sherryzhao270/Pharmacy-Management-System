@@ -19,7 +19,11 @@ input{
     padding: 5px;
     margin: 3px;
 }
-button{float:right}
+button{
+    float:right;
+    margin-bottom: 50px;
+    margin-right: -40px;
+}
 #table-section{
     margin: auto;
     margin-left: 50px;
