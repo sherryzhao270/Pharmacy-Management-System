@@ -18,11 +18,11 @@ WHERE NOT EXISTS (
     SELECT distinct(pm.m_name)
     FROM (pharmacy natural join medicine) as pm
     WHERE pm.p_id = p1.p_id
-)
+);
 
 SELECT distinct(manufacturer.f_name)
 FROM manufacturer natural join medicine
 WHERE medicine.m_name NOT IN (
     SELECT distinct(medicine.m_name)
     FROM medicine natural join prescription_medicine
-)
+);
