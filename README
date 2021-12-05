@@ -4,7 +4,7 @@ To run the web project,
 
 1. Run the tables.sql and insert_values.sql in pgAdmin 4 query editor.
 
-2. Connecting the database to the application by changing the line 78-87 in setting.py
+2. Connect the database to the application by changing the line 78-87 in setting.py
 
 3. python3 manage.py runserver
 
