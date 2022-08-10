@@ -1,4 +1,4 @@
-# Pharmacy Management Project
+## Pharmacy Management Project
 
 A web app to help managing the pharmacy system by recording the data and trajectories of various drugs.
 
